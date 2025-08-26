@@ -20,6 +20,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use App\Models\User;
+use Filament\Actions\Action;
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -30,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Purple,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -55,23 +56,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])
-            ->plugins([
-                FilamentEditProfilePlugin::make()
-                ->slug('my-profile')
-                // ->setTitle('My Profile')
-                // ->setNavigationLabel('My Profile')
-                // ->setNavigationGroup('Group Profile')
-                ->setIcon('heroicon-o-user')
-                // ->setSort(10)
-                // ->canAccess(fn () => auth()->user()->id === 1)
-                // ->shouldRegisterNavigation(false)
-                // ->shouldShowEmailForm()
-                // ->shouldShowDeleteAccountForm(false)
-                // ->shouldShowSanctumTokens()
-                // ->shouldShowBrowserSessionsForm()
-                // ->shouldShowAvatarForm()
-                
             ]);
+            // ->userMenuItems([
+            // 'profile' => fn (Action $action) => $action->label('Edit profile'),
+                
+            // ])
+    
     }
 }
