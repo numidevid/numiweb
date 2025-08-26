@@ -15,10 +15,11 @@ class EventForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                FileUpload::make('image_url')
+                Textarea::make('short_description')
+                    ->required(),
+                TextInput::make('year')
+                    ->required(),
+                FileUpload::make('image')
                     ->image()
                     ->required(),
             ]);

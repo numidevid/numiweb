@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Events\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
@@ -17,7 +18,8 @@ class EventsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                ImageColumn::make('image_url'),
+                TextColumn::make('year'),
+                ImageColumn::make('image'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -32,6 +34,7 @@ class EventsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
